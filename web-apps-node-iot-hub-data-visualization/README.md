@@ -214,6 +214,6 @@ In this tutorial, you learned how to:
 - In a web page, display device data in a chart
 
 > Note: remember to delete any Azure resources created during this sample to avoid unnecessary charges.
---
-> Note: I am not the author of this code Microsoft and Azure team are the sole owners on this code. The only addition I have made is the docker file to ease the deployment to local machines.
-
+```python
+Note: I am not the author of this code Microsoft and Azure team are the sole owners on this code. The only addition I have made is the docker file to ease the deployment to local machines.
+```
