@@ -1,0 +1,2 @@
+IotHubConnectionString=<Provide connection string here>
+EventHubConsumerGroup=<provide consumer group here>

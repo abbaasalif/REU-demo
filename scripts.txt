@@ -1,0 +1,53 @@
+Scripts to keep handy during tutorials
+1.	Simulateddevice.py
+2.	Anomaly detection
+WITH AnomalyDetectionStep AS
+(
+    SELECT
+        deviceid,
+        messageid,
+        EVENTENQUEUEDUTCTIME AS time,
+        temperature,
+        humidity,
+        AnomalyDetection_SpikeAndDip(CAST(temperature AS float), 95, 30, 'spikesanddips')
+            OVER(LIMIT DURATION(second, 30)) AS SpikeAndDipScores
+    FROM iothub
+)
+SELECT
+    deviceid,
+    messageid,
+    time,
+    temperature,
+    humidity,
+    CAST(GetRecordPropertyValue(SpikeAndDipScores, 'Score') AS float) AS
+    SpikeAndDipScore,
+    CAST(GetRecordPropertyValue(SpikeAndDipScores, 'IsAnomaly') AS bigint) AS
+    IsSpikeAndDipAnomaly
+INTO poweranomaly 
+FROM AnomalyDetectionStep;
+
+3.	Machine Learning Script
+WITH MachineLearningStep AS
+(
+    SELECT
+        EVENTENQUEUEDUTCTIME AS time,
+        temperature,
+        humidity,
+        machinelearning(temperature, humidity) as result
+    FROM 
+        iothub
+)
+SELECT
+    time,
+    CAST(result.[temperature] as FLOAT) as temparature,
+    CAST(result.[humidity] as FLOAT) as humidity,
+    CAST (result.[Scored Probabilities] AS FLOAT ) AS 'probabality of rain'
+INTO blobs
+FROM machinelearningstep
+3. Inital script:
+	SELECT
+    deviceid, messageid, EventEnqueuedUtcTime as time, temperature, humidity
+INTO
+    <cosmos>
+FROM
+    <Iothub>
