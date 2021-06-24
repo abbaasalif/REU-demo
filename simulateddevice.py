@@ -40,10 +40,6 @@ def iothub_client_telemetry_sample_run():
             # Build the message with simulated telemetry values.
             temperature = TEMPERATURE + (random.random() * 15)
             humidity = HUMIDITY + (random.random() * 20)
-            if id!=0 and (id%10==0):
-                temperature=60.523
-            elif id!=0 and (id%23==0):
-                temperature=-1.22154
             msg_txt_formatted = MSG_TXT.format(devid=devid, id1=id,temperature=temperature, humidity=humidity)
             message = Message(msg_txt_formatted)
             print( "Sending message: {}".format(message) )
