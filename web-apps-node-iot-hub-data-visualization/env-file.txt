@@ -1,2 +1,2 @@
-IotHubConnectionString=<Provide connection string here>
-EventHubConsumerGroup=<provide consumer group here>
+IotHubConnectionString=HostName=morsehub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=9vp8t6aa/Ringtulo0VM3UDm2NQfHXesTLI7nz3V334=
+EventHubConsumerGroup=webapp
