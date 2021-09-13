@@ -3,6 +3,7 @@
 
 import os
 import random
+from datetime import datetime
 import time
 
 # Using the Python Device SDK for IoT Hub:
@@ -17,12 +18,12 @@ from azure.iot.device import IoTHubDeviceClient, Message
 #
 # You can use the Azure CLI to find the connection string:
 # az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
-CONNECTION_STRING = "HostName=alifhub.azure-devices.net;DeviceId=pi;SharedAccessKey=eX9FRyIqvaHuJI88lA9HgaygIIcanBj68F4cGSHu0pE="
+CONNECTION_STRING = "HostName=morsehub.azure-devices.net;DeviceId=laptop;SharedAccessKey=PvUchoe2MaFdg/6DPVjPxbiUTzrnunPHXBv+7QueXyQ="
 
 # Define the JSON message to send to IoT Hub.
 TEMPERATURE = 20.0
 HUMIDITY = 60
-MSG_TXT = '{{"deviceid": "{devid}","messageid": {id1},"temperature": {temperature},"humidity": {humidity}}}'
+MSG_TXT = '{{"deviceid": "{devid}","datetime":"{datetimenow}","messageid": {id1},"temperature": {temperature},"humidity": {humidity}}}'
 
 def iothub_client_init():
     # Create an IoT Hub client
@@ -40,7 +41,8 @@ def iothub_client_telemetry_sample_run():
             # Build the message with simulated telemetry values.
             temperature = TEMPERATURE + (random.random() * 15)
             humidity = HUMIDITY + (random.random() * 20)
-            msg_txt_formatted = MSG_TXT.format(devid=devid, id1=id,temperature=temperature, humidity=humidity)
+            datetimenow = str(datetime.now().isoformat())
+            msg_txt_formatted = MSG_TXT.format(devid=devid, id1=id,temperature=temperature, humidity=humidity, datetimenow=datetimenow)
             message = Message(msg_txt_formatted)
             print( "Sending message: {}".format(message) )
             client.send_message(message)
