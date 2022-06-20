@@ -18,12 +18,12 @@ from azure.iot.device import IoTHubDeviceClient, Message
 #
 # You can use the Azure CLI to find the connection string:
 # az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
-CONNECTION_STRING = "HostName=morsehub.azure-devices.net;DeviceId=laptop;SharedAccessKey=PvUchoe2MaFdg/6DPVjPxbiUTzrnunPHXBv+7QueXyQ="
+CONNECTION_STRING = "HostName=morsestudio.azure-devices.net;DeviceId=pi;SharedAccessKey=4MMf/+frMjNrmZHZWrgHhkplIrFErhF1vvAYiJ6PQ2w="
 
 # Define the JSON message to send to IoT Hub.
 TEMPERATURE = 20.0
 HUMIDITY = 60
-MSG_TXT = '{{"deviceid": "{devid}","datetime":"{datetimenow}","messageid": {id1},"temperature": {temperature},"humidity": {humidity}}}'
+MSG_TXT = f'{{"deviceid": "{devid}","datetime":"{datetimenow}","messageid": {id1},"temperature": {temperature},"humidity": {humidity}}}'
 
 def iothub_client_init():
     # Create an IoT Hub client

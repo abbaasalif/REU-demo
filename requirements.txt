@@ -1,4 +1,4 @@
-azure-iot-device
-azure-iot-hub
-azure-iothub-service-client
-azure-iothub-device-client
+azure-iot-device==2.7.0
+azure-iot-hub==2.4.0
+azure-iothub-device-client==1.4.6
+azure-iothub-service-clien==1.4.6
