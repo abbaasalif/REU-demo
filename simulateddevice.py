@@ -23,7 +23,7 @@ CONNECTION_STRING = "HostName=morsestudio.azure-devices.net;DeviceId=pi;SharedAc
 # Define the JSON message to send to IoT Hub.
 TEMPERATURE = 20.0
 HUMIDITY = 60
-MSG_TXT = f'{{"deviceid": "{devid}","datetime":"{datetimenow}","messageid": {id1},"temperature": {temperature},"humidity": {humidity}}}'
+MSG_TXT = '{{"deviceid": "{devid}","datetime":"{datetimenow}","messageid": {id1},"temperature": {temperature},"humidity": {humidity}}}'
 
 def iothub_client_init():
     # Create an IoT Hub client
